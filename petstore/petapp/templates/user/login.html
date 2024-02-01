@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+    <style>
+        .s{
+            text-align: center;
+            background: linear-gradient(to left, #ff9900 0%, #ffff00 100%);
+        }
+        .color{
+            background: linear-gradient(to left, #cc6600 0%, #ccff99 100%);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-2 shadow border  mt-5 color">
+                <div class="s shadow border mt-3">
+                    <h1>
+                        Login to pet Store
+                    </h1>
+                </div>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        Username : <input type="text" name="uname" class="form-control">
+                        Password : <input type="password" name="pass" class="form-control">
+                        <input type="submit" value="Login" class="btn btn-success mt-3 mb-3" >
+                    </form>
+                 
+            </div>
+
+        </div>
+
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <h1> Display Data </h1>
+    <table class="table">
+        
+        {% if messages %}
+          {% for message in messages %}
+            <script>
+            alert('{{message}}') 
+            </script>
+          {% endfor %}
+        {% endif%}
+        <tr class="bg-primary">
+            <th>Sr.No</th>
+            <th>petName</th>
+            <th>Category</th>
+            <th>Breed</th>
+            <th>Price</th>
+            <th>Discription</th>
+            <th>Image</th>
+            <th colspan="2">Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.pname}}</td>
+            <td>{{i.category}}</td>
+            <td>{{i.breed}}</td>
+            <td>{{i.price}}</td>
+            <td>{{i.desc}}</td>
+            <td><img src="{{i.image.url}}" width="100px" srcset=""></td>
+            <td>
+                <form action="{% url 'delete' i.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" class="btn-danger" value="delete"/>
+                </form>
+                <a href="{% url 'update' i.id %}"> <button class="btn-success">update</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+   
+</body>
+</html>

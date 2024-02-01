@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static  %}
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        .s{
+            text-align: center;
+            border: 1px solid black;
+            background: linear-gradient(to left, #ff9900 0%, #ffff00 100%);
+            
+        }
+        .color{
+            background: linear-gradient(to left, #cc6600 0%, #ccff99 100%);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        {%  if messages  %}
+        {%  for message in messages %}
+              <h3>{{message}}</h3>
+        {% endfor %}
+        {%  endif %}
+        <div class="row">
+            <div class="col-lg-8 offset-2 shadow border color">
+                <div class="s shadow border mt-3">
+                    <h1>
+                        Sign Up to pet Store
+                    </h1>
+                </div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    username : <input type="text" name="uname" class="form-control"/>
+                    Email : <input type="text" name="email"  class="form-control">
+                    Password : <input type="password" name="pass" class="form-control">
+                    <input type="submit" value="Sign_up" class="btn btn-success  mt-3 mb-3">
+                </form> 
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</body>
+</html>
